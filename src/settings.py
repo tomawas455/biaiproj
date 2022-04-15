@@ -85,6 +85,7 @@ class Settings:
             cli_option.setter(collected_args)
         if len(args) == 0:
             self.print_help()
+            sys.exit(0)
         elif self._filepath is None:
             raise SettingsError("Missing dataset file path!")
 
@@ -175,7 +176,12 @@ class Settings:
             help_text += ' '.join(option.options) + ' -> ' + option.help + '\n'
         help_text += dedent("""
             dataset format:
-                JSON file with stuff\
+                JSON file that's array of objects.
+                each point/city needs name and x/y coords.
+                eg. [
+                    {"name":"A", "x":1, "y":1},
+                    {"name":"B", "x":2, "y":2}
+                ]\
         """)
         print(help_text)
 
