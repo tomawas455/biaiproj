@@ -3,7 +3,7 @@
 ## Travelling salesman problem
 
 ### help:
-Usage: python main.py \[options\] \<dataset\>
+Usage: python src/main.py \[options\] \<dataset\>
 -h --help -> Shows help
 -g --generations -> Set amount of generations to create, 10 by default
 -p --population -> Set each generation population size, 20 by default

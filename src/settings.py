@@ -170,7 +170,7 @@ class Settings:
         help_text = dedent("""\
             Travelling salesman problem solver using genetic algorithm
 
-            Usage: python main.py [options] <dataset>
+            Usage: python src/main.py [options] <dataset>
         """)
         for option in options:
             help_text += ' '.join(option.options) + ' -> ' + option.help + '\n'
