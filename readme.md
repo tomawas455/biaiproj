@@ -11,7 +11,7 @@ Usage: python src/main.py \[options\] \<dataset\><br/>
 &emsp;-c --crossover -> Set amount of individuals that can crossover to create new generation<br/>
 &emsp;-m --mutation -> Set probability of mutation of individual, 0.02 by default<br/>
 &emsp;-o --output -> Save output to file<br/>
-&emsp;-Gd --generate-dataset -> Generate new dataset file<br/>
+&emsp;-d --generate-dataset -> Generate new dataset file<br/>
 &emsp;-f --find-best-way -> Compare genetic algorithm with best possible way<br/>
 <br/>
 dataset format:<br/>

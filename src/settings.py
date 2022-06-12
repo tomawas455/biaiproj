@@ -105,7 +105,7 @@ class Settings:
                 ['-h', '--help'],
                 "Shows help",
                 (lambda args:
-                    (lambda x: sys.exit(0))(self.print_help())
+                 (lambda x: sys.exit(0))(self.print_help())
                  ),
                 0
             ),
@@ -140,7 +140,7 @@ class Settings:
                 self.set_outputpath
             ),
             CLIOption(
-                ['-Gd', '--generate-dataset'],
+                ['-d', '--generate-dataset'],
                 """Generate new dataset file\n
                     params: 
                         - amount - amount of generated points
@@ -235,7 +235,6 @@ class Dataset_properties:
         self.max_x = int(max_x)
         self.min_y = int(min_y)
         self.max_y = int(max_y)
-
 
 
 if __name__ == '__main__':

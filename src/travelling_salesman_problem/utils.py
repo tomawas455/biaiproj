@@ -62,7 +62,7 @@ def name_of_point(n):
     return result
 
 
-def generate_dataset(dataset_properties): #count, file_name="..\dataset.json", min_x=0, max_x=10, min_y=0, max_y=10):
+def generate_dataset(dataset_properties):
     min_x = dataset_properties.min_x
     max_x = dataset_properties.max_x
     min_y = dataset_properties.min_y
@@ -97,8 +97,6 @@ def generate_dataset(dataset_properties): #count, file_name="..\dataset.json", m
                         city.y = min_y
         cities.append(city)
     result = json.dumps([city.__dict__ for city in cities])
-    # for city in cities:
-    #     result.append(json.dumps(city.__dict__))
 
     temp = 0
     while os.path.exists(file_name):

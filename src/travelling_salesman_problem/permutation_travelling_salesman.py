@@ -1,8 +1,7 @@
-from travelling_salesman_problem.utils import City
 from itertools import permutations
 
 
-class BestWayFinder:
+class PermutationTravellingSalesman:
     def __init__(self, cities):
         self.roads = list(permutations(cities))
         self.best_road = None
