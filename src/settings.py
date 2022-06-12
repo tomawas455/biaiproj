@@ -24,6 +24,8 @@ class Settings:
         self._mutation_probability = 0.02
         self._filepath = None
         self._outputpath = None
+        self._dataset_properties = None
+        self._find_best_way = False
 
     @property
     def generations(self):
@@ -52,6 +54,14 @@ class Settings:
     @property
     def outputpath(self):
         return self._outputpath
+
+    @property
+    def generate_dataset_properties(self):
+        return self._dataset_properties
+
+    @property
+    def find_best_way(self):
+        return self._find_best_way
 
     def get_from_cli_args(self):
         possible_options = self.get_possible_options()
@@ -128,6 +138,26 @@ class Settings:
                 ['-o', '--output'],
                 "Save output to file",
                 self.set_outputpath
+            ),
+            CLIOption(
+                ['-Gd', '--generate-dataset'],
+                """Generate new dataset file\n
+                    params: 
+                        - amount - amount of generated points
+                        - filename - name of generated dataset file
+                        - min_x - min x value
+                        - max_x - max x value
+                        - min_y - min y value
+                        - max_y - max y value
+                """,
+                self.set_dataset_generator,
+                6
+            ),
+            CLIOption(
+                ['-f', '--find-best-way'],
+                "Compare genetic algorithm with best possible way",
+                self.set_find_best_way,
+                0
             )
         ]
 
@@ -184,6 +214,28 @@ class Settings:
                 ]\
         """)
         print(help_text)
+
+    def set_dataset_generator(self, args):
+        if len(args) == 1:
+            self._dataset_properties = Dataset_properties(args[0])
+        elif len(args) == 2:
+            self._dataset_properties = Dataset_properties(args[0], args[1])
+        elif len(args) == 6:
+            self._dataset_properties = Dataset_properties(args[0], args[1], args[2], args[3], args[4], args[5])
+
+    def set_find_best_way(self, args):
+        self._find_best_way = True
+
+
+class Dataset_properties:
+    def __init__(self, amount, file_name="..\dataset.json", min_x=0, max_x=10, min_y=0, max_y=10):
+        self.amount = int(amount)
+        self.file_name = file_name
+        self.min_x = int(min_x)
+        self.max_x = int(max_x)
+        self.min_y = int(min_y)
+        self.max_y = int(max_y)
+
 
 
 if __name__ == '__main__':
