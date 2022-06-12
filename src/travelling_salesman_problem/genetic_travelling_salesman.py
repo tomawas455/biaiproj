@@ -156,7 +156,6 @@ class Mutation:
         self.swap(index, index + 1)
 
     def end_to_end_swap(self):
-        # we take first
         lower_max = int(len(self.chromosome) / 2)
         upper_max = round(len(self.chromosome) / 2)
         lower_half = self.chromosome[:lower_max]
