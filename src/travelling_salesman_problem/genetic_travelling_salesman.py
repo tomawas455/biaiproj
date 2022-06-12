@@ -25,7 +25,7 @@ class GeneticTravellingSalesman:
                 * self.settings.to_next_generation
             )])
             self.create_population(generations[-2], generations[-1])
-        return generations[-1][0]
+        return generations  # [-1][0]
 
     def create_population(self, previous_population=None, new_population=None):
         population = None
@@ -38,8 +38,8 @@ class GeneticTravellingSalesman:
         else:
             if new_population is None:
                 new_population = []
-            individuals_to_create = self.settings.population\
-                - len(new_population)
+            individuals_to_create = self.settings.population \
+                                    - len(new_population)
             parents = previous_population[:int(
                 self.settings.population * self.settings.fit_to_crossover
             )]
@@ -77,9 +77,9 @@ class Individual:
         ])
 
     def __repr__(self):
-        return 'fitness: ' + str(self.fitness)\
-            + ', length: ' + str(self.road_length())\
-            + ' ' + str(self.chromosome)
+        return 'fitness: ' + str(self.fitness) \
+               + ', length: ' + str(self.road_length()) \
+               + ' ' + str(self.chromosome)
 
 
 class Crossover:
@@ -156,9 +156,8 @@ class Mutation:
         self.swap(index, index + 1)
 
     def end_to_end_swap(self):
-        # we take first
-        lower_max = int(len(self.chromosome)/2)
-        upper_max = round(len(self.chromosome)/2)
+        lower_max = int(len(self.chromosome) / 2)
+        upper_max = round(len(self.chromosome) / 2)
         lower_half = self.chromosome[:lower_max]
         upper_half = self.chromosome[upper_max:]
         self.chromosome[:lower_max] = upper_half
@@ -174,7 +173,7 @@ class Mutation:
         # at worst we do adjacent swap pretending to be inversion
         # now we iterate over half od end - start + 1
         # +1 because end is part of range (it's range inclusive in our case)
-        for _ in range(int((inversion_end - inversion_start + 1)/2)):
+        for _ in range(int((inversion_end - inversion_start + 1) / 2)):
             self.swap(inversion_start, inversion_end)
             inversion_start += 1
             inversion_end -= 1
